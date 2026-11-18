@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kunal Kumar Jain | Portfolio</title>
+<meta name="description" content="Portfolio of Kunal Kumar Jain: apps, Python projects, websites and video content from Guwahati.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef1f4; --surface: #ffffff; --ink: #1b2430; --muted: #566273; --line: #d3dae2; --link: #2347b8;
+  --green: #4c9a5f; --yellow: #c99a1f; --blue: #4a78c9; --violet: #8a64b8; --tilefg: #ffffff;
+  --font: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #12171d; --surface: #1a212a; --ink: #e8ecf1; --muted: #9aa6b5; --line: #2c3541; --link: #8fb0ff;
+    --green: #3f8551; --yellow: #a9801a; --blue: #3d65b0; --violet: #7656a1; }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.6; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+header.top { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: 15px; }
+header.top nav a { margin-left: 20px; color: var(--ink); text-decoration: none; }
+header.top nav a:hover { text-decoration: underline; }
+
+/* hero: the name as a row of puzzle tiles */
+.hero { padding: 48px 0 40px; }
+.tiles { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
+.tile { width: clamp(52px, 11vw, 84px); height: clamp(52px, 11vw, 84px); display: grid; place-items: center; border-radius: 6px;
+  font-weight: 800; font-size: clamp(28px, 6vw, 46px); color: var(--tilefg); }
+.tile.g { background: var(--green); } .tile.y { background: var(--yellow); } .tile.n { background: #7b8591; }
+.tile.gap { background: none; width: clamp(14px, 3vw, 28px); }
+@media (prefers-reduced-motion: no-preference) {
+  .tile { animation: flip .6s ease both; animation-delay: calc(var(--i) * 120ms); }
+  @keyframes flip { 0% { transform: rotateX(90deg); opacity: 0; } 100% { transform: rotateX(0); opacity: 1; } }
+}
+.hero h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; margin: 0 0 14px; font-weight: 800; letter-spacing: -0.01em; max-width: 22ch; }
+.hero p { margin: 0 0 12px; max-width: 60ch; color: var(--muted); font-size: 19px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-block; padding: 9px 16px; border: 2px solid var(--ink); border-radius: 8px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; background: transparent; }
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.solid { background: var(--ink); color: var(--bg); }
+.btn.solid:hover { background: transparent; color: var(--ink); }
+
+section { padding: 36px 0; border-top: 1px solid var(--line); }
+section h2 { font-size: 26px; margin: 0 0 6px; font-weight: 800; }
+.sub { color: var(--muted); margin: 0 0 22px; max-width: 60ch; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.filters button { font: inherit; font-size: 15px; padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.card .head { display: flex; align-items: center; gap: 12px; }
+.card .mark { flex: none; width: 38px; height: 38px; border-radius: 6px; display: grid; place-items: center; color: var(--tilefg); font-weight: 800; }
+.card h3 { margin: 0; font-size: 18px; line-height: 1.25; }
+.card p { margin: 0; color: var(--muted); font-size: 16px; }
+.card .tech { font-size: 14px; color: var(--ink); }
+.card .go { margin-top: auto; font-size: 15px; font-weight: 600; }
+.card .go a { margin-right: 14px; }
+.card .note { font-size: 14px; color: var(--muted); }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.cols h3 { margin: 0 0 6px; font-size: 17px; }
+.cols p { margin: 0; color: var(--muted); font-size: 16px; }
+
+.games { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.board { display: grid; grid-template-columns: repeat(4, 38px); gap: 5px; }
+.board span { height: 38px; border-radius: 5px; background: var(--line); display: grid; place-items: center; font-weight: 800; font-size: 14px; color: var(--tilefg); }
+.board .a { background: var(--yellow); } .board .b { background: var(--green); } .board .c { background: var(--blue); }
+
+footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <strong>Kunal Kumar Jain</strong>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a><a href="#games">Games</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <!-- Name as puzzle tiles. Colors are just decoration: g = green, y = yellow, n = grey. -->
+      <ul class="tiles" aria-label="Kunal Jain">
+        <li class="tile g" style="--i:0">K</li><li class="tile n" style="--i:1">U</li><li class="tile y" style="--i:2">N</li><li class="tile g" style="--i:3">A</li><li class="tile n" style="--i:4">L</li>
+      </ul>
+      <h1>I build apps and Python tools, make videos, and handle operations and IT.</h1>
+      <p>Computer science graduate from Guwahati. I build Android apps with Flutter, small machine learning projects in Python, and websites, and I also handle operations and IT for a company and make content on YouTube and Instagram.</p>
+      <div class="links">
+        <a class="btn solid" href="#work">See my work</a>
+        <a class="btn" href="resume.pdf">Download resume</a>
+        <a class="btn" href="http://github.com/kun-zZ">GitHub</a>
+      </div>
+    </div>
+
+    <section id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Work</h2>
+      <p class="sub">Projects, websites and content I’ve made. New things get added at the top of the list.</p>
+      <div class="filters" role="group" aria-label="Filter projects" id="filters"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="games" aria-labelledby="games-h">
+      <h2 id="games-h">Puzzle games</h2>
+      <p class="sub">Next up: small browser games like 2048, Wordle and a crossword. They’ll live on their own site and link back here.</p>
+      <div class="games">
+        <div class="board" aria-hidden="true">
+          <span class="a">2</span><span></span><span></span><span class="b">8</span>
+          <span></span><span class="c">4</span><span></span><span></span>
+          <span></span><span></span><span class="a">2</span><span></span>
+          <span class="b">8</span><span></span><span></span><span class="c">4</span>
+        </div>
+        <p style="margin:0;color:var(--muted)">Coming soon.</p>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <p class="sub">B.Tech in Computer Science and Engineering from Assam Don Bosco University (2023). Since 2022 I’ve worked in operations and IT support, with freelance web work and volunteering on the side.</p>
+      <div class="cols">
+        <div><h3>Build</h3><p>Python, Java, C, Dart, SQL, Flutter, Flask, FastAPI, Pandas, Scikit-learn, MySQL, Firebase, Git.</p></div>
+        <div><h3>Create</h3><p>Video editing in DaVinci Resolve, graphics in Canva, social media and storytelling.</p></div>
+        <div><h3>Run</h3><p>Tally, Excel, billing, inventory tracking, payment follow-up and IT support for a small office.</p></div>
+        <div><h3>Languages</h3><p>English and Hindi (fluent), Assamese (speaking, reading), Bengali (basic understanding).</p></div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p class="sub">Open to remote work and relocation. The easiest way to reach me is email.</p>
+      <div class="links" style="margin-top:0">
+        <a class="btn solid" href="mailto:kunaljain.0801@gmail.com">kunaljain.0801@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/kunal-k01/">LinkedIn</a>
+        <a class="btn" href="http://github.com/kun-zZ">GitHub</a>
+        <a class="btn" href="https://www.youtube.com/@joeblessbee">YouTube</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© Kunal Kumar Jain</footer>
+</div>
+
+<script>
+/* ADD A PROJECT: copy one block below, paste it at the TOP of the list, and edit the text.
+   cats: pick from "Apps", "Python", "Web", "Content" (one or more). The first one sets the tile color.
+   links: [["Label", "https://..."]]  (leave as [] if there is nothing to link to) */
+const PROJECTS = [
+  { title: "YouTube channel", cats: ["Content"], tech: "DaVinci Resolve, Canva",
+    desc: "My own outlet for art, edits, humour, toys and gaming, plus live streams.",
+    links: [["Watch on YouTube", "https://www.youtube.com/@joeblessbee"]] },
+  { title: "Humans of Guwahati", cats: ["Content"], tech: "Canva, DaVinci Resolve, Instagram",
+    desc: "Volunteer content and community manager (2020 to 2023). Led 200+ storytelling campaigns and grew the Instagram page from zero to about 3k followers, mostly with reels about the city, with a team of about 8.",
+    links: [] },
+  { title: "Abhigyan Academy website", cats: ["Web"], tech: "Wix, Google Business Profile",
+    desc: "Designed and maintained a coaching institute’s website with enquiry forms and course listings, and managed its Google Business Profile and social media. Freelance, 2023 to 2024.",
+    links: [], note: "No longer online." },
+  { title: "GetYourAid", cats: ["Apps", "Python"], tech: "Flutter, Firebase, Python",
+    desc: "A bilingual (English-Assamese) telemedicine Android app with doctor chat, appointment booking and a symptom-based disease prediction model. Team project: I built the Android app and integrated the model.",
+    links: [["Code on GitHub", "http://github.com/kun-zZ"]] },
+  { title: "Journal Paper Recommendation System", cats: ["Python"], tech: "Python, Word2Vec",
+    desc: "Recommends journals that match what a user is looking for, using Word2Vec embeddings, bag-of-words and content-based filtering.",
+    links: [] },
+  { title: "Spelling Checker", cats: ["Python"], tech: "Python, n-gram language model",
+    desc: "Finds spelling errors, highlights them and suggests corrections using an n-gram language model.",
+    links: [] },
+  { title: "Email Automation Bot", cats: ["Python"], tech: "Python",
+    desc: "Sends automated emails with dynamic content and attachments, replacing repetitive manual work.",
+    links: [] },
+];
+
+const COLORS = { Apps: "var(--green)", Python: "var(--yellow)", Web: "var(--blue)", Content: "var(--violet)" };
+const grid = document.getElementById("grid");
+const filters = document.getElementById("filters");
+let active = "All";
+
+function el(tag, props, kids) {
+  const n = document.createElement(tag);
+  Object.assign(n, props || {});
+  (kids || []).forEach(k => n.append(k));
+  return n;
+}
+
+function render() {
+  grid.replaceChildren();
+  PROJECTS.filter(p => active === "All" || p.cats.includes(active)).forEach(p => {
+    const mark = el("div", { className: "mark", textContent: p.title[0] });
+    mark.style.background = COLORS[p.cats[0]];
+    const card = el("article", { className: "card" }, [
+      el("div", { className: "head" }, [mark, el("h3", { textContent: p.title })]),
+      el("p", { textContent: p.desc }),
+      el("div", { className: "tech", textContent: p.tech }),
+    ]);
+    if (p.note) card.append(el("div", { className: "note", textContent: p.note }));
+    if (p.links.length) card.append(el("div", { className: "go" }, p.links.map(l => el("a", { href: l[1], textContent: l[0] }))));
+    grid.append(card);
+  });
+}
+
+function buildFilters() {
+  filters.replaceChildren();
+  ["All", "Apps", "Python", "Web", "Content"].forEach(name => {
+    const b = el("button", { type: "button", textContent: name });
+    b.setAttribute("aria-pressed", String(name === active));
+    b.addEventListener("click", () => { active = name; buildFilters(); render(); });
+    filters.append(b);
+  });
+}
+buildFilters();
+render();
+</script>
+</body>
+</html>
