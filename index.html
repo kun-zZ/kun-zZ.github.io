@@ -94,7 +94,7 @@ footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--m
         <li class="tile g" style="--i:0">K</li><li class="tile n" style="--i:1">U</li><li class="tile y" style="--i:2">N</li><li class="tile g" style="--i:3">A</li><li class="tile n" style="--i:4">L</li>
       </ul>
       <h1>I build apps and Python tools, make videos, and handle operations and IT.</h1>
-      <p>Computer science graduate from Guwahati. I build Android apps with Flutter, small machine learning projects in Python, and websites, and I also handle operations and IT for a company and make content on YouTube and Instagram.</p>
+      <p>Computer science graduate from Guwahati. I build Android apps with Flutter, small projects in Python, manage websites, and I also handle operations and IT for a company and make content on YouTube and Instagram.</p>
       <div class="links">
         <a class="btn solid" href="#work">See my work</a>
         <a class="btn" href="resume.pdf">Resume</a>
@@ -138,10 +138,11 @@ footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--m
       <h2 id="contact-h">Contact</h2>
       <p class="sub">Open to remote work and relocation. The easiest way to reach me is email.</p>
       <div class="links" style="margin-top:0">
-        <a class="btn solid" href="mailto:kunaljain.0801@gmail.com">kunaljain.0801@gmail.com</a>
-        <a class="btn" href="https://www.linkedin.com/in/kunal-k01/">LinkedIn</a>
-        <a class="btn" href="http://github.com/kun-zZ">GitHub</a>
-        <a class="btn" href="https://www.youtube.com/@joeblessbee">YouTube</a>
+        <span class="tip"><a class="btn solid" href="mailto:kunaljain.0801@gmail.com" target="_blank" rel="noopener noreferrer" aria-describedby="mailtip">kunaljain.0801@gmail.com</a><span id="mailtip" role="tooltip">If clicking didn’t open anything, it doesn’t mean the code sucks, you don’t have a default mail app.</span></span>
+        <a class="btn" href="https://www.linkedin.com/in/kunal-k01/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="http://github.com/kun-zZ" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href="https://www.youtube.com/@joeblessbee" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a class="btn" href="https://www.instagram.com/joeblessbee" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </section>
   </main>
@@ -154,18 +155,19 @@ footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--m
    cats: pick from "Apps", "Python", "Web", "Content" (one or more). The first one sets the tile color.
    links: [["Label", "https://..."]]  (leave as [] if there is nothing to link to) */
 const PROJECTS = [
+   { title: "GetYourAid", cats: ["Apps", "Python"], tech: "Flutter, Firebase, Python",
+    desc: "A bilingual (English-Assamese) telemedicine Android app with doctor chat, appointment booking and a symptom-based disease prediction model. Team project: I built the Android app and integrated the model.",
+    links: [["Code on GitHub", "http://github.com/kun-zZ"]] },
   { title: "YouTube channel", cats: ["Content"], tech: "DaVinci Resolve, Canva",
     desc: "My own outlet for art, edits, humour, toys and gaming, plus live streams.",
     links: [["Watch on YouTube", "https://www.youtube.com/@joeblessbee"]] },
   { title: "Humans of Guwahati", cats: ["Content"], tech: "Canva, DaVinci Resolve, Instagram",
     desc: "Volunteer content and community manager (2020 to 2023). Led 200+ storytelling campaigns and grew the Instagram page from zero to about 3k followers, mostly with reels about the city, with a team of about 8.",
-    links: [] },
+    links: [["View on Instagram", "https://www.instagram.com/officialhumansofguwahati_"]], note: "The Instagram page is now inactive." },
   { title: "Abhigyan Academy website", cats: ["Web"], tech: "Wix, Google Business Profile",
     desc: "Designed and maintained a coaching institute’s website with enquiry forms and course listings, and managed its Google Business Profile and social media. Freelance, 2023 to 2024.",
     links: [], note: "No longer online." },
-  { title: "GetYourAid", cats: ["Apps", "Python"], tech: "Flutter, Firebase, Python",
-    desc: "A bilingual (English-Assamese) telemedicine Android app with doctor chat, appointment booking and a symptom-based disease prediction model. Team project: I built the Android app and integrated the model.",
-    links: [["Code on GitHub", "http://github.com/kun-zZ"]] },
+ 
   { title: "Journal Paper Recommendation System", cats: ["Python"], tech: "Python, Word2Vec",
     desc: "Recommends journals that match what a user is looking for, using Word2Vec embeddings, bag-of-words and content-based filtering.",
     links: [] },
@@ -200,7 +202,7 @@ function render() {
       el("div", { className: "tech", textContent: p.tech }),
     ]);
     if (p.note) card.append(el("div", { className: "note", textContent: p.note }));
-    if (p.links.length) card.append(el("div", { className: "go" }, p.links.map(l => el("a", { href: l[1], textContent: l[0] }))));
+    if (p.links.length) card.append(el("div", { className: "go" }, p.links.map(l => el("a", { href: l[1], textContent: l[0], target: "_blank", rel: "noopener noreferrer" }))));
     grid.append(card);
   });
 }
