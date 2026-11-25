@@ -97,10 +97,6 @@ section h2 { font-size: 26px; margin: 0 0 6px; font-weight: 800; }
 .cols h3 { margin: 0 0 6px; font-size: 17px; }
 .cols p { margin: 0; color: var(--muted); font-size: 16px; }
 
-.games { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.board { display: grid; grid-template-columns: repeat(4, 38px); gap: 5px; }
-.board span { height: 38px; border-radius: 5px; background: var(--line); display: grid; place-items: center; font-weight: 800; font-size: 14px; color: var(--tilefg); }
-.board .a { background: var(--yellow); } .board .b { background: var(--green); } .board .c { background: var(--blue); }
 
 footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
 </style>
@@ -110,7 +106,7 @@ footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--m
   <header class="top">
     <strong>Kunal Kumar Jain</strong>
     <nav aria-label="Sections">
-      <a href="#work">Work</a><a href="#games">Minigames</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#work">Work</a><a href="#play">Play</a><a href="#about">About</a><a href="#contact">Contact</a>
       <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
         <span class="knob">
           <svg class="sun" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -142,17 +138,25 @@ footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--m
       <div class="grid" id="grid"></div>
     </section>
 
-    <section id="games" aria-labelledby="games-h">
-      <h2 id="games-h">Minigames</h2>
-      <p class="sub">Small browser games that run on any phone or laptop. A reaction time test is up, and more are on the way.</p>
-      <div class="games">
-        <div class="board" aria-hidden="true">
-          <span class="a">2</span><span></span><span></span><span class="b">8</span>
-          <span></span><span class="c">4</span><span></span><span></span>
-          <span></span><span></span><span class="a">2</span><span></span>
-          <span class="b">8</span><span></span><span></span><span class="c">4</span>
-        </div>
-        <a class="btn solid" href="https://kun-zz.github.io/minigames/">Play Minigames</a>
+    <section id="play" aria-labelledby="play-h">
+      <h2 id="play-h">Check these out</h2>
+      <p class="sub">Smaller projects you can open and play with.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="head"><div class="mark" style="background:var(--yellow)" aria-hidden="true">M</div><h3>Minigames</h3></div>
+          <p>Small browser games that run on any phone or laptop. It starts with a reaction time test, with more on the way.</p>
+          <div class="go">
+            <a href="https://kun-zz.github.io/minigames/" target="_blank" rel="noopener noreferrer">Play Minigames</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="head"><div class="mark" style="background:var(--blue)" aria-hidden="true">S</div><h3>myShelf</h3></div>
+          <p>A digital shelf you can decorate. Put items on the shelves, play lofi music and set the mood.</p>
+          <div class="go">
+            <a href="https://kun-zz.github.io/myShelf/" target="_blank" rel="noopener noreferrer">Open the shelf</a>
+            <a href="https://github.com/kun-zZ/myShelf" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
+          </div>
+        </article>
       </div>
     </section>
 
